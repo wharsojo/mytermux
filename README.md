@@ -1,12 +1,9 @@
 # mytermux
 my personal configuration of termux
 ```
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/termux-setup.sh)"
-```
-
-```
 $ pkg update 
 $ pkg install nano curl wget git zsh tmux tig proot openssh 
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/termux-setup.sh)"
 ```
 access from other pc
 ```
