@@ -1,18 +1,11 @@
 # mytermux
 my personal configuration of termux
 ```
-$ pkg update 
-$ pkg install nano curl wget git zsh tmux tig proot openssh 
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/termux-setup.sh)"
+$ pkg up && pkg i curl -y && sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/master/mytermux/termux-setup.sh)"
 ```
 access from other pc
 ```
 $ password ## enter the password
-```
-install oh-my-zsh
-```
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-$ chsh -s zsh
 ```
 install ubuntu
 ```
