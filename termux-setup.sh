@@ -17,9 +17,8 @@ echo "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mast
 echo "rm ~/.ubuntu-setup.sh" >> ./ubuntu-fs/root/.ubuntu-setup.sh
 echo "exit && exit"  >> ./ubuntu-fs/root/.ubuntu-setup.sh
 
-echo "[ -s \"~/.ubuntu-setup.sh\" ] && sh ~/.ubuntu-setup.sh" >> ./ubuntu-fs/root/.bashrc
+echo "[ -s \"/root/.ubuntu-setup.sh\" ] && sh /root/.ubuntu-setup.sh" >> ./ubuntu-fs/root/.bashrc
 
-# sed -i 's/ bin\/bash/ bin\/zsh/g' ~/linux/ubuntu/start-ubuntu.sh 
 # source ~/.zshrc
 
 ./start-ubuntu.sh

@@ -2,6 +2,9 @@
 my personal configuration of termux
 ```
 $ pkg up -y && pkg i curl -y && sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/termux-setup.sh)"
+$ sed -i 's/ bin\/bash/ bin\/zsh/g' ~/linux/ubuntu/start-ubuntu.sh 
+$ echo "alias ubuntu='(cd ~/linux/ubuntu && ./start-ubuntu.sh)'" >> ~/linux/ubuntu/start-ubuntu.sh
+$ echo "sshd" >> ~/linux/ubuntu/start-ubuntu.sh
 ```
 access from other pc
 ```
