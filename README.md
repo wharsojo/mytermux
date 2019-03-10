@@ -1,7 +1,7 @@
 # mytermux
 my personal configuration of termux
 ```
-$ pkg up && pkg i curl -y && sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/master/mytermux/termux-setup.sh)"
+$ pkg up -y && pkg i curl -y && sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/termux-setup.sh)"
 ```
 access from other pc
 ```
