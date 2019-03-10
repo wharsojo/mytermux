@@ -1,4 +1,4 @@
-pkg i nano curl wget git zsh tmux tig proot openssh -y
+pkg i nano sed curl wget git zsh tmux tig proot openssh -y
 
 echo "\nInstall oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -22,5 +22,6 @@ echo "[ -s \"/root/.ubuntu-setup.sh\" ] && sh /root/.ubuntu-setup.sh" >> ./ubunt
 # source ~/.zshrc
 
 ./start-ubuntu.sh
+sed -i 's/ bin\/bash/ bin\/zsh/g' ~/linux/ubuntu/start-ubuntu.sh 
 
 exit
