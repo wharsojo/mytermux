@@ -1,26 +1,29 @@
-pkg i nano sed curl wget git zsh tmux proot openssh -y
-
-echo "\nInstall oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-chsh -s zsh
 linuxPath="~/linux/ubuntu"
 linuxSetup="/root/.ubuntu-setup.sh"
-echo "[ -s \"$linuxSetup\" ] && sh $linuxSetup" >> ./ubuntu-fs/root/.bashrc
+linuxFsSetup=./ubuntu-fs$linuxSetup
+github="https://raw.githubusercontent.com"
+myLinux="$github/Neo-Oli/termux-ubuntu/master/ubuntu.sh"
+ohMyZsh="$github/robbyrussell/oh-my-zsh/master/tools/install.sh"
+pkg i vi sed curl git zsh tmux proot openssh -y
+
+echo "\nInstall oh-my-zsh"
+sh -c "$(curl -fsSL $ohMyZsh)"
+chsh -s zsh
 
 echo "\nInstall Ubuntu Linux"
-mkdir -p $linuxPath && cd $linuxPath
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Neo-Oli/termux-ubuntu/master/ubuntu.sh)"
+mkdir -p $linuxPath && cd $linuxPath && sh -c "$(curl -fsSL $myLinux)"
+echo "[ -s \"$linuxSetup\" ] && sh $linuxSetup" >> $linuxPath/ubuntu-fs/root/.bashrc
 echo "alias ubuntu='(cd $linuxPath && ./start-ubuntu.sh)'" >> ~/.zshrc
 echo "tmux new-session -d -s scr" >> ~/.zshrc
 echo "sshd" >> ~/.zshrc
 
-echo "apt-get update -y" > ./ubuntu-fs$linuxSetup
-echo "apt-get upgrade -y" >> ./ubuntu-fs$linuxSetup
-echo "apt-get install nano curl git zsh -y" >> ./ubuntu-fs$linuxSetup
-echo "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" >> ./ubuntu-fs$linuxSetup
-sed -i 's/chsh -s/# chsh -s/g'  ./ubuntu-fs$linuxSetup
-echo "rm ~/.ubuntu-setup.sh" >> ./ubuntu-fs$linuxSetup
-echo "exit && exit"  >> ./ubuntu-fs$linuxSetup
+echo "apt-get update -y" > $linuxFsSetup
+echo "apt-get upgrade -y" >> $linuxFsSetup
+echo "apt-get install vi curl git zsh -y" >> $linuxFsSetup
+echo "$(curl -fsSL $ohMyZsh)" >> $linuxFsSetup
+echo "rm ~/.ubuntu-setup.sh" >> $linuxFsSetup
+sed -i 's/chsh -s/# chsh -s/g' $linuxFsSetup
+echo "exit && exit" >> $linuxFsSetup
 
 # source ~/.zshrc
 
