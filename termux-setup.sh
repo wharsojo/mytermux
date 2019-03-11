@@ -1,7 +1,6 @@
 linuxTermux=~/linux/ubuntu
 linuxFSetup=.ubuntu-setup.sh
-linuxFsSetup=$linuxTermux/$linuxFSetup
-linuxFSystem=$linuxTermux/ubuntu-fs/root
+linuxFSystem=$linuxTermux/ubuntu-fs/root/$linuxFSetup
 
 github=https://raw.githubusercontent.com
 myLinux=$github/Neo-Oli/termux-ubuntu/master/ubuntu.sh
@@ -21,12 +20,12 @@ echo "tmux new-session -d -s scr" >> ~/.zshrc
 echo "sshd" >> ~/.zshrc
 
 echo "[ -s \"~/$linuxFSetup\" ] && sh ~/$linuxFSetup" >> ./ubuntu-fs/root/.bashrc
-echo "apt-get update -y && apt-get upgrade -y" > $linuxFsSetup
-echo "apt-get install vim git zsh curl -y" >> $linuxFsSetup
-echo "$(curl -fsSL $ohMyZsh)" >> $linuxFsSetup
-sed -i 's/chsh -s/## chsh -s/g' $linuxFsSetup
-echo "rm ~/.ubuntu-setup.sh" >> $linuxFsSetup
-echo "exit && exit" >> $linuxFsSetup
+echo "apt-get update -y && apt-get upgrade -y" > $linuxFSystem
+echo "apt-get install vim git zsh curl -y" >> $linuxFSystem
+echo "$(curl -fsSL $ohMyZsh)" >> $linuxFSystem
+sed -i 's/chsh -s/## chsh -s/g' $linuxFSystem
+echo "rm ~/.ubuntu-setup.sh" >> $linuxFSystem
+echo "exit && exit" >> $linuxFSystem
 
 # source ~/.zshrc
 
