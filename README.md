@@ -1,5 +1,6 @@
 # mytermux
-my personal configuration of termux
+my personal configuration of termux:
+* ssh &lt;root@ip&gt; -p 8022  `$ ssh root@10.236.166.133 -p 8022`
 ```
 $ pkg up -y && pkg i curl -y && sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/termux-setup.sh)"
 ```
