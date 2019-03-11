@@ -22,6 +22,6 @@ echo "[ -s \"/root/.ubuntu-setup.sh\" ] && sh /root/.ubuntu-setup.sh" >> ./ubunt
 # source ~/.zshrc
 
 ./start-ubuntu.sh
-sed -i 's/ bin\/bash/ bin\/zsh/g' ~/linux/ubuntu/start-ubuntu.sh 
+sed -i 's/bash --/zsh --/g' ./start-ubuntu.sh 
 
 exit
