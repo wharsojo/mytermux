@@ -19,7 +19,7 @@ echo "sshd" >> ~/.zshrc
 
 echo "[ -s \"$linuxSetup\" ] && sh $linuxSetup" >> ./ubuntu-fs/root/.bashrc
 echo "apt-get update -y && apt-get upgrade -y" > $linuxFsSetup
-echo "apt-get install vi git zsh curl -y" >> $linuxFsSetup
+echo "apt-get install vim git zsh curl -y" >> $linuxFsSetup
 echo "$(curl -fsSL $ohMyZsh)" >> $linuxFsSetup
 echo "rm ~/.ubuntu-setup.sh" >> $linuxFsSetup
 sed -i 's/chsh -s/# chsh -s/g' $linuxFsSetup
