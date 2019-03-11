@@ -19,7 +19,7 @@ echo "alias ubuntu='(cd $linuxTermux && ./start-ubuntu.sh)'" >> ~/.zshrc
 echo "tmux new-session -d -s scr" >> ~/.zshrc
 echo "sshd" >> ~/.zshrc
 
-echo "[ -s \"~/$linuxFSetup\" ] && sh ~/$linuxFSetup" >> ./ubuntu-fs/root/.bashrc
+echo "[ -s \"$HOME/$linuxFSetup\" ] && sh $HOME/$linuxFSetup" >> ./ubuntu-fs/root/.bashrc
 echo "apt-get update -y && apt-get upgrade -y" > $linuxFSystem
 echo "apt-get install vim git zsh curl -y" >> $linuxFSystem
 echo "$(curl -fsSL $ohMyZsh)" >> $linuxFSystem
