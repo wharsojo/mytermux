@@ -14,12 +14,12 @@ after installation, need to `exit` `three (3) times`, and create a default passw
 ###### ubuntu
 * `vim git zsh curl`
 * `oh-my-zsh with default config minus git dirty status`
-##### access from other pc
+##### Access from other pc
 * `ssh-copy-id <ip> -p 8022`
 * `ssh [root@]<ip> -p 8022`
 
 
-##### install node version manager
+##### Install node version manager
 ```
 $ sh -c "$(curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh)"
 
