@@ -29,3 +29,5 @@ export NVM_DIR="$HOME/.nvm"
 $ nvm install node
 $ npm i -g create-react-app
 ```
+
+##### License: MIT
