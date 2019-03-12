@@ -9,13 +9,13 @@ chsh -s zsh
 ## Install Ubuntu Linux
 
 ## add alias `ubuntu` to termux shell 
-echo "alias ubuntu='(cd ~/linux/ubuntu && ./start-ubuntu.sh)'" >> ~/.zshrc
+echo "alias ubuntu='(cd ~/linux/ubuntu && ./start-ubuntu.sh)'" >> ~/.zshenv
 
 ## create a new detach tmux screen named: scr  
-echo "tmux new-session -d -s scr" >> ~/.zshrc
+echo "tmux new-session -d -s scr" >> ~/.zshenv
 
 ## activate sshd server
-echo "sshd" >> ~/.zshrc
+echo "sshd" >> ~/.zshenv
 
 ## create & change current folder 
 ## run script to install linux fs
