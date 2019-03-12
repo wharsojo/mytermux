@@ -8,12 +8,12 @@ chsh -s zsh
 
 ## default settings for terux env:
 ## * tmux detach screen name: scr
+echo "export MYTERMUX=$github/wharsojo/mytermux/master" >> ~/.zshenv
 echo "tmux new-session -d -s scr" >> ~/.zshenv
 ## * activate sshd server
 echo "sshd" >> ~/.zshenv
 ## * add alias `ubuntu`
 echo "alias ubuntu='(cd ~/linux/ubuntu && ./start-ubuntu.sh)'" >> ~/.zshenv
-echo "export mytermux=$github/wharsojo/mytermux/master" >> ~/.zshenv
 
 ## Install Ubuntu Linux
 
