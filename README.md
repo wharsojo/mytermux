@@ -1,40 +1,25 @@
 # mytermux
-my personal configuration of termux:
-* ssh &lt;root@ip&gt; -p 8022  `$ ssh root@10.236.166.133 -p 8022`
+My personal / opinionated configuration of termux, Its consist of :
+
 ```
 $ pkg up -y && pkg i curl -y && sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/termux-setup.sh)"
 ```
-access from other pc
-```
-$ password ## enter the password
-```
-install ubuntu
-```
-$ mkdir -p ~/linux/ubuntu && cd ~/linux/ubuntu
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/Neo-Oli/termux-ubuntu/master/ubuntu.sh)"
+after installation, need to `exit` `three (3) times`, and create a default password
+`passwd` `## enter the password`
+###### termux: 
+* `vim git sed zsh curl wget tmux proot openssh`
+* `oh-my-zsh with default configuration`
+* `tmux detach screen name: scr`
+* `sshd server - port 8022`
+###### ubuntu
+* `vim git zsh curl`
+* `oh-my-zsh with default config minus git dirty status`
+##### access from other pc
+* `ssh-copy-id <ip> -p 8022`
+* `ssh [root@]<ip> -p 8022`
 
-$ nano ~/.zshrc
-alias ubuntu='(cd ~/linux/ubuntu && ./start-ubuntu.sh)'
-sshd
-[ctl + x]
-```
-configure ubuntu with curl, git & oh-my-zsh 
-```
-# Restart Termux to apply configs
-$ ubuntu
-$ apt-get update
-$ apt-get upgrade
-$ apt-get install nano curl git zsh
-$ ln -s  /storage/<sdcard-id>/Android/data/com.termux ~/sdcard
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-## close ubuntu
-## update start-ubuntu.sh  from bash => zsh
-$ cd ~/.linux/ubuntu && ./start-ubuntu
-## find command+=" /bin/bash --login"  update from bash to zsh
-[ctl + x] 
-```
 
-install node version manager
+##### install node version manager
 ```
 $ sh -c "$(curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh)"
 

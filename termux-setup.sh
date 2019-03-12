@@ -6,16 +6,15 @@ ohMyZsh="$github/robbyrussell/oh-my-zsh/master/tools/install.sh"
 sh -c "$(curl -fsSL $ohMyZsh)"
 chsh -s zsh
 
-## Install Ubuntu Linux
-
-## add alias `ubuntu` to termux shell 
+## default settings for terux env:
+## * tmux detach screen name: scr
+echo "tmux new-session -d -s scr" >> ~/.zshenv
+## * activate sshd server
+echo "sshd" >> ~/.zshenv
+## * add alias `ubuntu`
 echo "alias ubuntu='(cd ~/linux/ubuntu && ./start-ubuntu.sh)'" >> ~/.zshenv
 
-## create a new detach tmux screen named: scr  
-echo "tmux new-session -d -s scr" >> ~/.zshenv
-
-## activate sshd server
-echo "sshd" >> ~/.zshenv
+## Install Ubuntu Linux
 
 ## create & change current folder 
 ## run script to install linux fs
