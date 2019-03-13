@@ -1,6 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash -e
 unset LD_PRELOAD
 fs=$(pwd)/alpine-fs
+sdcard=$(ls /storage | grep -E '[0-9]+')
 echo 'nameserver 8.8.8.8' > $fs/etc/resolv.conf
 command="proot"
 command+=" --link2symlink"
@@ -11,7 +12,7 @@ command+=" -b /sys/"
 command+=" -b /proc/"
 command+=" -b /storage/"
 command+=" -b /storage/emulated/0:/root/internal"
-command+=" -b /storage/3637-6263/Android/data/com.termux:/root/sdcard"
+command+=" -b /storage/$sdcard/Android/data/com.termux:/root/sdcard"
 command+=" -b $fs"
 command+=" -w /root"
 command+=" /usr/bin/env -i"
