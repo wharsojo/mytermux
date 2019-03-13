@@ -1,5 +1,5 @@
 pkg i vim git sed zsh curl wget tmux proot openssh -y
-
+termux-setup-storage
 ## Install oh-my-zsh on termux
 github="https://raw.githubusercontent.com"
 ohMyZsh="$github/robbyrussell/oh-my-zsh/master/tools/install.sh"

@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash -e
 unset LD_PRELOAD
 fs=$(pwd)/alpine-fs
-sdcard=$(ls /storage | grep -E '[0-9]+')
+sdcard=$(ls ~/storage | grep -E '[0-9]+')
 echo 'nameserver 8.8.8.8' > $fs/etc/resolv.conf
 command="proot"
 command+=" --link2symlink"

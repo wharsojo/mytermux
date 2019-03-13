@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash -e
 unset LD_PRELOAD
 
-sdcard=$(ls /storage | grep -E '[0-9]+')
+sdcard=$(ls ~/storage | grep -E '[0-9]+')
 
 command="proot"
 command+=" --link2symlink"
