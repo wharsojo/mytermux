@@ -1,3 +1,4 @@
+#!/data/data/com.termux/files/usr/bin/bash -e
 
 ## Setup colors
 reset='\033[0m'
