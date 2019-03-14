@@ -3,6 +3,8 @@ My personal / opinionated configuration of termux, Its consist of :
 
 ```
 $ pkg up -y && pkg i curl -y && sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/termux-setup.sh)"
+
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/linux/alpine/download.sh)"
 ```
 after installation, need to `exit` `three (3) times`, and create a default password
 `passwd` `## enter the password`

@@ -54,11 +54,11 @@ echo "exit" >> $linuxFS
 
 ## Start Alpine Linux
 printf "$yellow [*] Start Linux$reset\n"
-sed -i 's/zsh --/sh --/g' ./start-alpine.sh
-./start-alpine.sh
+sed -i 's/zsh --/sh --/g' ./start.sh
+./start.sh
 
 ## finished setup, change default shell to zsh
-sed -i 's/sh --/zsh --/g' ./start-alpine.sh
+sed -i 's/sh --/zsh --/g' ./start.sh
 
 exit
 
