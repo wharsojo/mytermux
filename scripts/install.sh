@@ -1,6 +1,5 @@
-mytermux="~/.mytermux2"
+mytermux="$PREFIX/home/.mytermux"
 scripts="$mytermux/scripts"
-github="https://github.com/wharsojo/mytermux"
 
-env git clone --depth=1 $github $mytermux
-
+env git clone --depth=1 https://github.com/wharsojo/mytermux $mytermux
+sh -c $(cat $scripts/setup-termux.sh)
