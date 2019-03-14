@@ -2,7 +2,6 @@
 unset LD_PRELOAD
 fs=$(pwd)/alpine-fs
 sdcard=$(ls /storage | grep -E '[0-9]+')
-echo 'nameserver 8.8.8.8' > $fs/etc/resolv.conf
 command="proot"
 command+=" --link2symlink"
 command+=" -0"
@@ -20,5 +19,5 @@ command+=" HOME=/root"
 command+=" TERM=$TERM"
 command+=" LANG=C.UTF-8"
 command+=" PATH=/bin:/usr/bin:/sbin:/usr/sbin"
-command+=" /bin/sh --login"
+command+=" /bin/zsh --login"
 exec $command

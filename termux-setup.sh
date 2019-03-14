@@ -45,10 +45,10 @@ echo "exit && exit" >> $linuxFS
 
 # source ~/.zshrc
 
-## add command to .bashrc: if file .setup-linux.sh exists run with ash shell  
+## if file .setup-linux.sh exists, run with ash shell  
 echo "[ -s ./.setup-linux.sh ] && sh ./.setup-linux.sh" >> ./ubuntu-fs/root/.bashrc
 
-## start ubuntu & setup
+## start linux & do the initial setup
 ./start-ubuntu.sh
 
 ## finished setup, change default shell to zsh
