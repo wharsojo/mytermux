@@ -2,7 +2,8 @@ export MYTERMUX=https://raw.githubusercontent.com/wharsojo/mytermux/master
 scr="$(tmux ls | grep scr | sed -e 's/\:.*//')"
 [ "$scr" != "scr" ] && tmux new-session -d -s scr
 sshd
+alias kill-tmx2='pkill -f tmux:'
 alias kill-tmux='kill $(ps aux | grep tmux: -m 1 | sed -e "s/ .*//")'
 alias setup-alpine="(cd ~/.mytermux/linux/alpine && ./download.sh)"
 alias start-alpine="(cd ~/.mytermux/linux/alpine && ./start.sh)"
-
+alias rm-dots="(rm -rf ~/.oh-my-zsh && rm -rf ~/.mytermux)"
