@@ -1,0 +1,4 @@
+export MYTERMUX=https://raw.githubusercontent.com/wharsojo/mytermux/master
+scr="$(tmux ls | grep scr | sed -e 's/\:.*//')"
+[ "$scr" != "scr" ] && tmux new-session -d -s scr
+sshd
