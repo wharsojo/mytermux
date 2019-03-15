@@ -2,7 +2,7 @@
 My personal / opinionated configuration of termux, Its consist of :
 
 ```
-$ curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/scripts/install.sh | sh
+$ pkg up -y && pkg i curl -y && sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/scripts/install.sh)"
 
 $ pkg up -y && pkg i curl -y && sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/termux-setup.sh)"
 
