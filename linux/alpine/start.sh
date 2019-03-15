@@ -19,5 +19,5 @@ command+=" HOME=/root"
 command+=" TERM=$TERM"
 command+=" LANG=C.UTF-8"
 command+=" PATH=/bin:/usr/bin:/sbin:/usr/sbin"
-command+=" /bin/zsh --login"
+command+=" /bin/sh --login"
 exec $command

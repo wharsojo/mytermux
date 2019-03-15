@@ -25,7 +25,6 @@ curl --progress-bar -L --fail --retry 4 -o $FS.tar.gz -O "$URL"
 printf "$yellow [*] Extract file-system$reset\n"
 rm -rf $FS
 mkdir -p $FS && cd $FS
-## proot --link2symlink -0 bsdtar -xpf ../$FS.tar.gz
 tar -zxf ../$FS.tar.gz
 cd ..
 
@@ -48,7 +47,7 @@ echo "apk update" > $linuxFS
 echo "apk upgrade" >> $linuxFS
 echo "apk add vim git zsh curl -y" >> $linuxFS
 echo "$(curl -fsSL $ohMyZsh)" >> $linuxFS
-sed -i 's/chsh -s/## chsh -s/g' $linuxFS
+sed -i 's/ +chsh -s.*//' $linuxFS
 echo "rm ~/.setup-linux.sh" >> $linuxFS
 echo "exit" >> $linuxFS
 
