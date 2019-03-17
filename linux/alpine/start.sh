@@ -12,6 +12,12 @@ command+=" -b /proc/"
 command+=" -b /storage/"
 command+=" -b /storage/emulated/0:/root/internal"
 command+=" -b /storage/$sdcard/Android/data/com.termux:/root/sdcard"
+command+=" -b $fs/tmp:/dev/shm"
+if [ -n "\$(ls -A $fs/binds)" ]; then
+  for f in $fs/binds/* ;do
+    . \$f
+  done
+fi
 #command+=" -b $fs"
 command+=" -w /root"
 command+=" /usr/bin/env -i"

@@ -19,7 +19,7 @@ FS="$HOME/.mytermux/linux/alpine/linux-fs"
 ## Download compressed Alpine Linux
 printf "$yellow [*] Download: $file ...$reset\n"
 rm -rf $FS
-mkdir -p $FS && cd $FS
+mkdir -p $FS/binds && cd $FS
 curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o $file
 
 ## Extract Linux file-system
