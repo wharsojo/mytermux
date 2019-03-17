@@ -6,18 +6,23 @@ red='\033[1;31m'
 blue='\033[1;34m'
 yellow='\033[1;33m'
 
-## Setup URL for download Alpine Linux 
-URL="http://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/$(uname -m)"
-VER=$(curl -s $URL/latest-releases.yaml | grep -m 1 -o version.* | sed -e 's/[^0-9.]*//g' -e 's/-$//')
-if [ -z "$VER" ] ; then
-  print "$red [!] Error getting Alpine latest version."
-  exit 1
-fi
-file="alpine-minirootfs-$VER-$(uname -m).tar.gz"
-URL="$URL/$file"
-FS="alpine-fs"
+declare -A arch=(
+[aarch64]=arm64
+[x86_64]=amd64
+[amd64]=amd64
+[i*86]=i386
+[arm]=armhf
+)
+name=${arch[$(uname -m)]}
 
-## Download compressed Alpine Linux
+## Setup URL for download Ubuntu Linux
+URL="https://partner-images.canonical.com/core/bionic/current/"
+file="ubuntu-bionic-core-cloudimg-$name-root.tar.gz"
+URL="$URL/$file"
+FS="ubuntu-fs"
+echo "URL: $URL"
+
+## Download compressed Ubuntu Linux
 printf "$yellow [*] Download: $file ...$reset\n"
 rm -rf $FS
 mkdir -p $FS && cd $FS
@@ -25,14 +30,14 @@ curl --progress-bar -L --fail --retry 4 -o $FS.tar.gz -O "$URL"
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"
-tar -zxf ../$FS.tar.gz
+proot --link2symlink tar -xf $FS.tar.gz --exclude='dev'||:
 
-## Remove compressed Alpine Linux
+## Remove compressed Ubuntu Linux
 rm $FS.tar.gz
 cd ..
 
 ## Configure linux
-printf "$yellow [*] Configure linux$reset\n"
+printf "$yellow [*] Configure linux $reset\n"
 echo 'nameserver 8.8.8.8' > $FS/etc/resolv.conf
 
 ## if file .setup-linux.sh exists, run with ash shell
@@ -43,9 +48,9 @@ echo "[ -s $setup ] && sh $setup" > $FS/root/.profile
 github="https://raw.githubusercontent.com"
 ohMyZsh="$github/robbyrussell/oh-my-zsh/master/tools/install.sh"
 linuxFS="$FS/root/.setup-linux.sh"
-echo "apk update" > $linuxFS
-echo "apk upgrade" >> $linuxFS
-echo "apk add vim git zsh curl -y" >> $linuxFS
+echo "apt-get update -y && apt-get upgrade -y" > $linuxFS
+echo "apt-get install vim git zsh curl -y" >> $linuxFS
+echo "git config --global --add oh-my-zsh.hide-dirty 1" >> $linuxFS
 echo "$(curl -fsSL $ohMyZsh)" >> $linuxFS
 sed -i 's/ +chsh -s.*//' $linuxFS
 echo "rm ~/.setup-linux.sh" >> $linuxFS
@@ -53,9 +58,8 @@ echo "exit" >> $linuxFS
 
 ## Start Linux
 printf "$yellow [*] Start Linux$reset\n"
-sed -i 's/zsh --/sh --/g' ./start.sh
+sed -i 's/zsh --/bash --/g' ./start.sh
 ./start.sh
-sed -i 's/sh --/zsh --/g' ./start.sh
-
+sed -i 's/bash --/zsh --/g' ./start.sh
 exit
 
