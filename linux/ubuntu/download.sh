@@ -18,22 +18,20 @@ name=${arch[$(uname -m)]}
 ## Setup URL for download Ubuntu Linux
 URL="https://partner-images.canonical.com/core/bionic/current/"
 file="ubuntu-bionic-core-cloudimg-$name-root.tar.gz"
-URL="$URL/$file"
-FS="ubuntu-fs"
-echo "URL: $URL"
+FS="$HOME/.mytermux/linux/ubuntu/linux-fs"
 
 ## Download compressed Ubuntu Linux
 printf "$yellow [*] Download: $file ...$reset\n"
 rm -rf $FS
 mkdir -p $FS && cd $FS
-curl --progress-bar -L --fail --retry 4 -o $FS.tar.gz -O "$URL"
+curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o $file
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"
-proot --link2symlink tar -xf $FS.tar.gz --exclude='dev'||:
+proot --link2symlink tar -xf $file --exclude='dev'||:
 
 ## Remove compressed Ubuntu Linux
-rm $FS.tar.gz
+rm $file
 cd ..
 
 ## Configure linux

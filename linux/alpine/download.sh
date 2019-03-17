@@ -14,21 +14,20 @@ if [ -z "$VER" ] ; then
   exit 1
 fi
 file="alpine-minirootfs-$VER-$(uname -m).tar.gz"
-URL="$URL/$file"
-FS="alpine-fs"
+FS="$HOME/.mytermux/linux/alpine/linux-fs"
 
 ## Download compressed Alpine Linux
 printf "$yellow [*] Download: $file ...$reset\n"
 rm -rf $FS
 mkdir -p $FS && cd $FS
-curl --progress-bar -L --fail --retry 4 -o $FS.tar.gz -O "$URL"
+curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o $file
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"
-tar -zxf ../$FS.tar.gz
+tar -zxf $file
 
 ## Remove compressed Alpine Linux
-rm $FS.tar.gz
+rm $file
 cd ..
 
 ## Configure linux

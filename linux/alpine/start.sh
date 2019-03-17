@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash -e
 unset LD_PRELOAD
-fs=$(pwd)/alpine-fs
+fs=$HOME/.mytermux/linux/alpine/linux-fs
 sdcard=$(ls /storage | grep -E '[0-9]+')
 command="proot"
 command+=" --link2symlink"
