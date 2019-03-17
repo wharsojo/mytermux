@@ -52,9 +52,9 @@ echo "exit" >> $linuxFS
 
 ## Start Linux
 printf "$yellow [*] Start Linux$reset\n"
-sed -i 's/zsh --/sh --/g' ./start.sh
+sed -i 's/zsh --/sh --/g' $FS/../start.sh
 ./start.sh
-sed -i 's/sh --/zsh --/g' ./start.sh
+sed -i 's/sh --/zsh --/g' $FS/../start.sh
 
 exit
 
