@@ -44,7 +44,7 @@ ohMyZsh="$github/robbyrussell/oh-my-zsh/master/tools/install.sh"
 linuxFS="$FS/root/.setup-linux.sh"
 echo "apk update" > $linuxFS
 echo "apk upgrade" >> $linuxFS
-echo "apk add vim git zsh curl -y" >> $linuxFS
+echo "apk add vim git zsh curl" >> $linuxFS
 echo "$(curl -fsSL $ohMyZsh)" >> $linuxFS
 sed -i 's/ +chsh -s.*//' $linuxFS
 echo "rm ~/.setup-linux.sh" >> $linuxFS
