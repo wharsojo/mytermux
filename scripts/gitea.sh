@@ -5,7 +5,7 @@ FS="$HOME/.mytermux/gitea-app"
 
 rm -rf $FS
 mkdir -p $FS && cd $FS
-curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o gitea
+curl --progress-bar -L --fail --retry 4 -O "$URL/$file" 
+mv $file 'gitea'
 chmod +x 'gitea'
 cd ..
-
