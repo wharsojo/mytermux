@@ -1,24 +1,18 @@
 #!/data/data/com.termux/files/usr/bin/bash -e
 unset LD_PRELOAD
-fs=$HOME/.mytermux/linux/alpine/linux-fs
+fs="$HOME/.mytermux/linux/alpine/linux-fs"
 sdcard=$(ls /storage | grep -E '[0-9]+')
 command="proot"
 command+=" --link2symlink"
 command+=" -0"
-command+=" -r $fs"
-command+=" -b /dev/"
-command+=" -b /sys/"
-command+=" -b /proc/"
-command+=" -b /storage/"
+command+=" -b /dev"
+command+=" -b /sys"
+command+=" -b /proc"
+command+=" -b /storage"
 command+=" -b /storage/emulated/0:/root/internal"
 command+=" -b /storage/$sdcard/Android/data/com.termux:/root/sdcard"
-command+=" -b $fs/tmp:/dev/shm"
-if [ -n "\$(ls -A $fs/binds)" ]; then
-  for f in $fs/binds/* ;do
-    . \$f
-  done
-fi
-#command+=" -b $fs"
+command+=" -b $HOME"
+command+=" -r $fs"
 command+=" -w /root"
 command+=" /usr/bin/env -i"
 command+=" HOME=/root"
