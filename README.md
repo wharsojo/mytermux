@@ -1,33 +1,41 @@
-# mytermux
-My personal / opinionated configuration of termux, test only on Samsung Galaxy Note:9. 
-Its consist of :
+My personal / opinionated configuration of [Termux](https://play.google.com/store/apps/details?id=com.termux), an attempt to make `Termux` easier to work to, either in `Termux` or *Linux inside* `Termux` with default same `Terminal applications`. Tested on Samsung Galaxy Note9.
+
+## Installation
+`My Termux` is installed by running the following commands in your terminal:
 
 ```
 $ pkg up && pkg i curl && curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/scripts/install.sh | sh
 ```
-after installation, need to `restart Termux app` and create default password
-`passwd` `## enter the password`
+after installation, need to `restart Termux` and create default password
+```
+$ passwd  ## enter the `password`
+```
 
-##### termux: 
+#### Termux: 
+These are the default Configs of `Termux`
 * `vim git sed zsh curl wget tmux proot openssh`
 * `oh-my-zsh with default configuration`
 * `tmux detach screen name: scr`
 * `sshd server - port 8022`
 
-##### Linux
+Aliases to setup and start *Linux inside* `Termux` 
+```
+* setup-alpine
+* setup-ubuntu
+* start-alpine
+* start-ubuntu
+```
 
-###### alpine
+#### Linux
+Default Configs for Linux (`Alpine`, `Ubuntu`)
 * `vim git zsh curl`
-* `oh-my-zsh with default config minus git dirty status`
+* `oh-my-zsh minus git dirty status`
 
-###### ubuntu
-* `vim git zsh curl`
-* `oh-my-zsh with default config minus git dirty status`
-
-##### Access from other pc
-* `ssh-copy-id <ip> -p 8022`
-* `ssh [root@]<ip> -p 8022`
-
+#### Access from other pc
+```
+* ssh-copy-id <ip> -p 8022
+* ssh [root@]<ip> -p 8022
+```
 
 #### Install node version manager
 ```
