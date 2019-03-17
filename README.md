@@ -3,7 +3,7 @@ My personal / opinionated configuration of termux, test only on Samsung Galaxy N
 Its consist of :
 
 ```
-$ pkg up -y && pkg i curl -y && sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/scripts/install.sh)"
+$ pkg up && pkg i curl && curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/scripts/install.sh | sh"
 ```
 after installation, need to `restart Termux app` and create default password
 `passwd` `## enter the password`
