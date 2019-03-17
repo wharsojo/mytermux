@@ -19,6 +19,7 @@ termux-setup-storage
 printf "$yellow [*] Setup oh my zshell ...$reset\n"
 github="https://raw.githubusercontent.com"
 ohMyZsh="$github/robbyrussell/oh-my-zsh/master/tools/install.sh"
-curl -fsSL $ohMyZsh | sh
+printf "$red [*] chsh zsh$reset\n"
 chsh -s zsh
+curl -fsSL $ohMyZsh | sh
 
