@@ -1,12 +1,9 @@
 # mytermux
-My personal / opinionated configuration of termux, Its consist of :
+My personal / opinionated configuration of termux, test only on Samsung Galaxy Note:9. 
+Its consist of :
 
 ```
 $ pkg up -y && pkg i curl -y && sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/scripts/install.sh)"
-
-$ pkg up -y && pkg i curl -y && sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/termux-setup.sh)"
-
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/wharsojo/mytermux/master/linux/alpine/download.sh)"
 ```
 after installation, need to `restart Termux app` and create default password
 `passwd` `## enter the password`
