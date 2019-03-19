@@ -40,7 +40,7 @@ echo 'nameserver 8.8.8.8' > $FS/etc/resolv.conf
 
 ## if file .setup-linux.sh exists, run with ash shell
 setup="./.setup-linux.sh"
-echo "[ -s $setup ] && sh $setup" > $FS/root/.profile
+echo "[ -s $setup ] && $setup" > $FS/root/.profile
 
 ## create `.setup-linux.sh` for initial setup
 github="https://raw.githubusercontent.com"
@@ -53,6 +53,7 @@ echo "$(curl -fsSL $ohMyZsh)" >> $linuxFS
 sed -i 's/ +chsh -s.*//' $linuxFS
 echo "rm ~/.setup-linux.sh" >> $linuxFS
 echo "exit" >> $linuxFS
+chmod +x $linuxFS
 
 ## Start Linux
 printf "$yellow [*] Start Linux$reset\n"
