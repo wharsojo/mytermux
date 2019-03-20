@@ -21,16 +21,18 @@ These are the default Configs of `Termux`
 Aliases to setup and start *Linux inside* `Termux` 
 ```
 * setup-alpine
+* setup-centos
 * setup-ubuntu
 * start-alpine
+* start-centos
 * start-ubuntu
 ```
 
 #### Linux
-Default Configs for Linux (`Alpine`, `Ubuntu`)
+Default Configs for Linux (`Centos`, `Ubuntu`)
 * `vim git zsh curl`
 * `oh-my-zsh minus git dirty status`
-
+Alpine linux right now having error: ERROR: busybox-1.29.3-r10.trigger: script exited with error 127, no work-around can be apply for this error, Appriciated if anyone can help.
 #### Access from other pc
 ```
 * ssh-copy-id <ip> -p 8022

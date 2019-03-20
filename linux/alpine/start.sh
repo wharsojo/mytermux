@@ -4,6 +4,9 @@ fs="$HOME/.mytermux/linux/alpine/linux-fs"
 sdcard=$(ls /storage | grep -E '[0-9]+')
 gitea="$HOME/.mytermux/gitea-app"
 
+#export PROOT_NO_SECCOMP=1
+#export PROOT_VERBOSE=2
+
 command="proot"
 command+=" --link2symlink"
 command+=" -0"

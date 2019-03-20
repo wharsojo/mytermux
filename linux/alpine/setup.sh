@@ -42,20 +42,20 @@ echo "[ -s $setup ] && $setup" > $FS/root/.profile
 github="https://raw.githubusercontent.com"
 ohMyZsh="$github/robbyrussell/oh-my-zsh/master/tools/install.sh"
 linuxFS="$FS/root/.setup-linux.sh"
-echo "apk update" > $linuxFS
-echo "apk upgrade" >> $linuxFS
-echo "apk add vim git zsh curl" >> $linuxFS
-echo "$(curl -fsSL $ohMyZsh)" >> $linuxFS
-sed -i 's/ +chsh -s.*//' $linuxFS
+#echo "apk update" > $linuxFS
+#echo "apk upgrade" >> $linuxFS
+#echo "apk add vim git zsh curl" >> $linuxFS
+#echo "$(curl -fsSL $ohMyZsh)" >> $linuxFS
+#sed -i 's/ +chsh -s.*//' $linuxFS
 echo "rm ~/.setup-linux.sh" >> $linuxFS
 echo "exit" >> $linuxFS
 chmod +x $linuxFS
 
 ## Start Linux
 printf "$yellow [*] Start Linux$reset\n"
-sed -i 's/zsh --/sh --/g' ./start.sh
+#sed -i 's/zsh --/sh --/g' ./start.sh
 ./start.sh
-sed -i 's/sh --/zsh --/g' ./start.sh
+#sed -i 's/sh --/zsh --/g' ./start.sh
 
 exit
 
