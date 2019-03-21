@@ -36,6 +36,6 @@ command+=" LANG=C.UTF-8"
 command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin"
 command+=" /bin/sh --login"
 echo $command
-printf "$yellow [*] Alpine Linux is starting\n$reset"
+printf "$yellow [*] Alpine Linux is starting v$(cat $fs/etc/alpine-release)\n$reset"
 exec $command
 

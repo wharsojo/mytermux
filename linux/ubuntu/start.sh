@@ -32,5 +32,6 @@ command+=" LANG=C.UTF-8"
 command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin"
 command+=" /bin/bash --login"
 echo $command
-printf "$yellow [*] Ubuntu Linux is starting\n$reset"
+ver=$(cat $fs/etc/lsb-release | grep DESC | sed -e 's/.*=//' -e 's/"//g')
+printf "$yellow [*] Linux is starting: $ver\n$reset"
 exec $command
