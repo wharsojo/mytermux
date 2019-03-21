@@ -4,6 +4,12 @@ fs="$HOME/.mytermux/linux/kali/linux-fs"
 sdcard=$(ls /storage | grep -E '[0-9]+')
 gitea="$HOME/.mytermux/gitea-app"
 
+## Setup Colors
+reset='\033[0m'
+red='\033[1;31m'
+blue='\033[1;34m'
+yellow='\033[1;33m'
+
 command="proot"
 command+=" --link2symlink"
 command+=" -0"
@@ -27,5 +33,6 @@ command+=" LANG=C.UTF-8"
 command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin"
 command+=" /bin/bash --login"
 echo $command
+printf "$yellow [*] Kali Linux is starting\n$reset"
 exec $command
 
