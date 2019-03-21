@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash -e
 unset LD_PRELOAD
-fs="$HOME/.mytermux/linux/centos/linux-fs"
+fs="$HOME/.mytermux/linux/kali/linux-fs"
 sdcard=$(ls /storage | grep -E '[0-9]+')
 gitea="$HOME/.mytermux/gitea-app"
 
@@ -25,7 +25,7 @@ command+=" HOME=/root"
 command+=" TERM=$TERM"
 command+=" LANG=C.UTF-8"
 command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin"
-command+=" /bin/sh --login"
+command+=" /bin/bash --login"
 echo $command
 exec $command
 

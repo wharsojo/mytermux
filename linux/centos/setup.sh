@@ -15,12 +15,12 @@ declare -A arch=(
 )
 name=${arch[$(uname -m)]}
 
-## Setup URL for download Centos Linux 
+## Setup URL for download Linux FS 
 URL="https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Rootfs/CentOS/${name}"
 file="centos-rootfs-${name}.tar.xz"
 FS="$HOME/.mytermux/linux/centos/linux-fs"
 
-## Download compressed Centos Linux
+## Download compressed Linux FS
 printf "$yellow [*] Download: $file ...$reset\n"
 rm -rf $FS
 mkdir -p $FS  && cd $FS
@@ -30,7 +30,7 @@ curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o $file
 printf "$yellow [*] Extract file-system$reset\n"
 proot --link2symlink tar -xJf ${file} --exclude='dev'||:
 
-## Remove compressed Centos Linux
+## Remove compressed Linux FS
 chmod +rwx ../linux-fs root
 rm $file
 cd ..

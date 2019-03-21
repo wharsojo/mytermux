@@ -15,12 +15,12 @@ declare -A arch=(
 )
 name=${arch[$(uname -m)]}
 
-## Setup URL for download Ubuntu Linux
+## Setup URL for download Linux FS
 URL="https://partner-images.canonical.com/core/bionic/current/"
 file="ubuntu-bionic-core-cloudimg-$name-root.tar.gz"
 FS="$HOME/.mytermux/linux/ubuntu/linux-fs"
 
-## Download compressed Ubuntu Linux
+## Download compressed Linux FS
 printf "$yellow [*] Download: $file ...$reset\n"
 rm -rf $FS
 mkdir -p $FS && cd $FS
@@ -30,7 +30,7 @@ curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o $file
 printf "$yellow [*] Extract file-system$reset\n"
 proot --link2symlink tar -xf $file --exclude='dev'||:
 
-## Remove compressed Ubuntu Linux
+## Remove compressed Linux FS
 rm $file
 cd ..
 
