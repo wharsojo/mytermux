@@ -33,6 +33,8 @@ command+=" LANG=C.UTF-8"
 command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin"
 command+=" /bin/bash --login"
 echo $command
-printf "$yellow [*] Kali Linux is starting\n$reset"
+name=$(cat $fs/etc/lsb-release| grep DESC | sed -e 's/.*=//' -e 's/"//g')
+vers=$(cat $fs/etc/os-release | grep _ID | sed -e 's/.*=//' -e 's/"//g')
+printf "$yellow [*] $name v$vers\n$reset"
 exec $command
 

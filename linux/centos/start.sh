@@ -33,6 +33,6 @@ command+=" LANG=C.UTF-8"
 command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin"
 command+=" /bin/sh --login"
 echo $command
-printf "$yellow [*] Centos Linux is starting\n$reset"
+printf "$yellow [*] $(cat $fs/etc/centos-release)\n$reset"
 exec $command
 
