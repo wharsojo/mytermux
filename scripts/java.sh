@@ -15,4 +15,8 @@ printf "$yellow [*] Download: $file ...$reset\n"
 rm -rf $FS
 mkdir -p $FS && cd $FS
 curl --progress-bar -L --fail --retry 4 -O "$URL/$file" 
-tar -zxf $file
+
+## Extract java-vm
+printf "$yellow [*] Extract java-vm$reset\n"
+tar -zxf $file && rm $file
+
