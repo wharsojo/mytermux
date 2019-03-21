@@ -3,6 +3,7 @@ unset LD_PRELOAD
 fs="$HOME/.mytermux/linux/kali/linux-fs"
 sdcard=$(ls /storage | grep -E '[0-9]+')
 gitea="$HOME/.mytermux/gitea-app"
+java="$HOME/.mytermux/java-vm"
 
 ## Setup Colors
 reset='\033[0m'
@@ -22,6 +23,9 @@ command+=" -b /storage/emulated/0:/root/internal"
 
 [[ -d $gitea ]] && \
 command+=" -b $gitea:/root/gitea-app"
+
+[[ -d $java ]] && \
+command+=" -b $java:/root/java-vm"
 
 command+=" -b $HOME"
 command+=" -r $fs"
