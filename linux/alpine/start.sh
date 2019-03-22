@@ -14,6 +14,11 @@ yellow='\033[1;33m'
 #export PROOT_NO_SECCOMP=1
 #export PROOT_VERBOSE=2
 
+if [ ! -d $fs ]; then
+   printf "$yellow [*] You need to run setup-alpine to create linux-fs\n$reset"
+   exit $?
+fi
+
 command="proot"
 command+=" --link2symlink"
 command+=" -0"

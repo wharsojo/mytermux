@@ -11,6 +11,11 @@ red='\033[1;31m'
 blue='\033[1;34m'
 yellow='\033[1;33m'
 
+if [ ! -d $fs ]; then
+   printf "$yellow [*] You need to run setup-ubuntu to create linux-fs\n$reset"
+   exit $?
+fi
+
 command="proot"
 command+=" --link2symlink"
 command+=" -0"
