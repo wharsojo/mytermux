@@ -15,17 +15,19 @@ if [ $# -lt 2 ]; then
    printf "mtx	v0.1 \n"
    printf "Use mtx <command> [arguments] \n\n"
    printf "Commands:\n"
-   printf "d/download	donwload apps\n"
-   printf "i/install	install linux distributions\n\n"
+   printf "i/install	install linux: alpine, centos, kali, ubuntu\n"
+   printf "u/uninstall	uninstall linux\n"
+   printf "d/download	donwload apps: gitea\n"
+   printf "r/remove	remove app\n\n"
    printf "Example - i/install:\n"
    printf "* mtx install alpine\n"
-   printf "* mtx install centos\n"
-   printf "* mtx install kali\n"
-   printf "* mtx install ubuntu\n"
-   printf "* mtx install gitea\n"
+   printf "\n"
+   printf "Example - d/download:\n"
+   printf "* mtx d gitea\n"
    printf "\n"
 fi
 
+OPTIONS=""
 POSITIONAL=()
 while [[ $# -gt 0 ]]
 do
@@ -34,7 +36,7 @@ fs="$HOME/.mytermux"
 
 case $key in
     -c|--compact)
-    OPTIONS="$key"
+    OPTIONS+="--compact "
     shift # pass options
     ;;
     i|install)
@@ -43,7 +45,6 @@ case $key in
        exit 1
     fi
     COMMAND="$key"
-    printf "COMMAND: $COMMAND\n"
     shift # pass value
     ;;
     d|download)
@@ -52,7 +53,6 @@ case $key in
        exit 1
     fi
     COMMAND="$key"
-    printf "COMMAND: $COMMAND\n"
     shift # past value
     ;;
     *)
@@ -60,11 +60,11 @@ case $key in
        printf "$red error no command issued!$reset\n\n"
        exit 1
     fi
-    ARGUMENTS="$key"
-    CMD="$fs/linux/$key/setup.sh"
-    printf "$ARGUMENTS $CMD\n"
+    CMD="$fs/linux/$key/setup.sh $OPTIONS"
+    CMD2="~/.mytermux/linux/$key/setup.sh $OPTIONS"
     shift # past value
-    $CMD
+    printf "$yellow [*] $CMD2\n$reset"
+    #$CMD
     ;;
 #    -s|--searchpath)
 #    SEARCHPATH="$2"
