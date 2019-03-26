@@ -8,7 +8,8 @@ yellow='\033[1;33m'
 
 ## Setup URL for download Linux FS 
 URL="https://dl.fedoraproject.org/pub/fedora/linux/releases/29/Container/$(uname -m)/images/"
-file="Fedora-Container-Minimal-Base-29-1.2.aarch64.tar.xz"
+#file="Fedora-Container-Minimal-Base-29-1.2.aarch64.tar.xz"
+file="Fedora-Container-Base-29-1.2.aarch64.tar.xz"
 FS="$HOME/.mytermux/linux/fedora/linux-fs"
 
 ## Download compressed Linux FS
@@ -19,10 +20,13 @@ curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o $file
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"
-proot --link2symlink tar -xJf ${file} --exclude='dev'||:
+tar xvf $file --strip-components=1 --exclude json --exclude VERSION
+printf "$blue 2nd extract: layer.tar$reset\n"
+tar -xpf layer.tar
 
 ## Remove compressed Linux FS
 chmod +rwx ../linux-fs root
+rm layer.tar
 rm $file
 cd ..
 
