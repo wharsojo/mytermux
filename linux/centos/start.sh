@@ -40,7 +40,13 @@ command+=" HOME=/root"
 command+=" TERM=$TERM"
 command+=" LANG=C.UTF-8"
 command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin"
+
+[ -d $fs/root/.oh-my-zsh ] && \
+command+=" /bin/zsh --login"
+
+[ ! -d $fs/root/.oh-my-zsh ] && \
 command+=" /bin/sh --login"
+
 echo $command
 printf "$yellow [*] $(cat $fs/etc/centos-release)\n$reset"
 exec $command

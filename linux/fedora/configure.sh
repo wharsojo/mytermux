@@ -25,10 +25,10 @@ echo "exit" >> $linuxFS
 chmod +x $linuxFS
 
 ## Start Linux
-printf "$yellow [*] Start Linux$reset\n"
-sed -i 's/zsh --/sh --/g' ./start.sh
-./start.sh
-sed -i 's/sh --/zsh --/g' ./start.sh
+#printf "$yellow [*] Start Linux$reset\n"
+#sed -i 's/zsh --/sh --/g' ./start.sh
+#./start.sh
+#sed -i 's/sh --/zsh --/g' ./start.sh
 
-exit
+#exit
 

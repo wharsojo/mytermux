@@ -13,14 +13,15 @@ if [ $# -lt 2 ]; then
    fi
    printf "$blue"
    printf "mtx	v0.1 \n"
-   printf "Use mtx <command> [arguments] \n\n"
+   printf "Use mtx [options] <command> [arguments] \n\n"
    printf "Commands:\n"
-   printf "i/install	install linux: alpine centos fedora kali ubuntu\n"
-   printf "u/uninstall	uninstall linux: alpine centos fedora kali ubuntu\n"
-   printf "d/download	donwload app: gitea\n"
-   printf "r/remove	remove app: gitea\n\n"
+   printf "i/install	alpine centos fedora kali ubuntu\n"
+   printf "u/uninstall	alpine centos fedora kali ubuntu\n"
+   printf "d/download	gitea\n"
+   printf "r/remove	gitea\n\n"
    printf "Example - i/install:\n"
    printf "* mtx install alpine\n"
+   printf "* mtx -c i alpine\n"
    printf "\n"
    printf "Example - d/download:\n"
    printf "* mtx d gitea\n"
@@ -35,8 +36,8 @@ key="$1"
 fs="$HOME/.mytermux"
 
 case $key in
-    -c|--compact)
-    OPTIONS+="--compact "
+    -c|--configure)
+    OPTIONS+="--configure "
     shift # pass options
     ;;
     i|install)
@@ -65,6 +66,10 @@ case $key in
     shift # past value
     printf "$yellow [*] $CMD2\n$reset"
     $CMD
+    if [[ $OPTIONS == *"--configure"* ]]; then
+       echo configure...
+       $fs/linux/$key/configure.sh 
+    fi
     ;;
 esac
 done
