@@ -16,9 +16,9 @@ if [ $# -lt 2 ]; then
    printf "Use mtx <command> [arguments] \n\n"
    printf "Commands:\n"
    printf "i/install	install linux: alpine, centos, kali, ubuntu\n"
-   printf "u/uninstall	uninstall linux\n"
-   printf "d/download	donwload apps: gitea\n"
-   printf "r/remove	remove app\n\n"
+   printf "u/uninstall	uninstall linux: alpine, centos, kali, ubuntu\n"
+   printf "d/download	donwload app: gitea\n"
+   printf "r/remove	remove app: gitea\n\n"
    printf "Example - i/install:\n"
    printf "* mtx install alpine\n"
    printf "\n"
@@ -64,36 +64,9 @@ case $key in
     CMD2="~/.mytermux/linux/$key/setup.sh $OPTIONS"
     shift # past value
     printf "$yellow [*] $CMD2\n$reset"
-    #$CMD
+    $CMD
     ;;
-#    -s|--searchpath)
-#    SEARCHPATH="$2"
-#    shift # past argument
-#    shift # past value
-#    ;;
-#    -l|--lib)
-#    LIBPATH="$2"
-#    shift # past argument
-#    shift # past value
-#    ;;
-#    --default)
-#    DEFAULT=YES
-#    shift # past argument
-#    ;;
-#    *)    # unknown option
-#    POSITIONAL+=("$1") # save it in an array for later
-#    shift # past argument
-#    ;;
 esac
 done
 set -- "${POSITIONAL[@]}" # restore positional parameters
 printf "\n"
-#echo FILE EXTENSION  = "${EXTENSION}"
-#echo SEARCH PATH     = "${SEARCHPATH}"
-#echo LIBRARY PATH    = "${LIBPATH}"
-#echo DEFAULT         = "${DEFAULT}"
-#echo "Number files in SEARCH PATH with EXTENSION:" $(ls -1 "${SEARCHPATH}"/*."${EXTENSION}" | wc -l)
-#if [[ -n $1 ]]; then
-#    echo "Last line of file specified as non-opt/last argument:"
-#    tail -1 "$1"
-#fi

@@ -39,27 +39,5 @@ cd ..
 printf "$yellow [*] Configure linux$reset\n"
 echo 'nameserver 8.8.8.8' > $FS/etc/resolv.conf
 
-## if file .setup-linux.sh exists, run with ash shell
-setup="./.setup-linux.sh"
-echo "[ -s $setup ] && $setup" > $FS/root/.profile
-
-## create `.setup-linux.sh` for initial setup
-github="https://raw.githubusercontent.com"
-ohMyZsh="$github/robbyrussell/oh-my-zsh/master/tools/install.sh"
-linuxFS="$FS/root/.setup-linux.sh"
-echo "yum -y update" > $linuxFS
-echo "yum -y install vim git zsh curl" >> $linuxFS
-echo "$(curl -fsSL $ohMyZsh)" >> $linuxFS
-sed -i 's/ +chsh -s.*//' $linuxFS
-echo "rm ~/.setup-linux.sh" >> $linuxFS
-echo "exit" >> $linuxFS
-chmod +x $linuxFS
-
-## Start Linux
-printf "$yellow [*] Start Linux$reset\n"
-sed -i 's/zsh --/sh --/g' ./start.sh
-./start.sh
-sed -i 's/sh --/zsh --/g' ./start.sh
-
-exit
+printf "\n"
 
