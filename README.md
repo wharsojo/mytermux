@@ -22,14 +22,18 @@ Aliases to setup and start *Linux inside* `Termux`
 ```
 * setup-alpine
 * setup-centos
+* setup-fedora
+* setup-kali
 * setup-ubuntu
 * start-alpine
 * start-centos
+* start-fedora
+* start-kali
 * start-ubuntu
 ```
 
 #### Linux
-Default Configs for Linux (`Centos`, `Ubuntu`)
+Default Configs for Linux (`Centos`, `Fedora`, `Kali`, `Ubuntu`)
 * `vim git zsh curl`
 * `oh-my-zsh minus git dirty status`
 
