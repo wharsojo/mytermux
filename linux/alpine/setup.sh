@@ -15,12 +15,20 @@ if [ -z "$VER" ] ; then
 fi
 file="alpine-minirootfs-$VER-$(uname -m).tar.gz"
 FS="$HOME/.mytermux/linux/alpine/linux-fs"
+CC="$HOME/.mytermux/linux/_cache"
 
 ## Download compressed Linux FS
 printf "$yellow [*] Download: $file ...$reset\n"
+
+mkdir -p $CC && cd $CC
+if [ ! -f $file ]; then
+   curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o $file
+fi
+
 rm -rf $FS
 mkdir -p $FS/binds && cd $FS
-curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o $file
+
+ln -s $CC/$file $file
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"

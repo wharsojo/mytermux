@@ -11,12 +11,20 @@ URL="https://dl.fedoraproject.org/pub/fedora/linux/releases/29/Container/$(uname
 #file="Fedora-Container-Minimal-Base-29-1.2.aarch64.tar.xz"
 file="Fedora-Container-Base-29-1.2.aarch64.tar.xz"
 FS="$HOME/.mytermux/linux/fedora/linux-fs"
+CC="$HOME/.mytermux/linux/_cache"
 
 ## Download compressed Linux FS
 printf "$yellow [*] Download: $file ...$reset\n"
+
+mkdir -p $CC && cd $CC
+if [ ! -f $file ]; then
+   curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o $file
+fi
+
 rm -rf $FS
 mkdir -p $FS  && cd $FS
-curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o $file
+
+ln -s $CC/$file $file
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"
@@ -25,7 +33,7 @@ printf "$blue 2nd extract: layer.tar$reset\n"
 tar -xpf layer.tar
 
 ## Remove compressed Linux FS
-chmod +rwx ../linux-fs root
+chmod +rwx -R $FS
 rm layer.tar
 rm $file
 cd ..

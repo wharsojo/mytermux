@@ -17,6 +17,7 @@ if [ $# -lt 2 ]; then
    printf "Commands:\n"
    printf "i/install	alpine centos fedora kali ubuntu\n"
    printf "u/uninstall	alpine centos fedora kali ubuntu\n"
+   printf "s/start    	alpine\n"
    printf "d/download	gitea\n"
    printf "r/remove	gitea\n\n"
    printf "Example - i/install:\n"
@@ -45,7 +46,23 @@ case $key in
        printf "$red error multiple commands$reset\n\n"
        exit 1
     fi
-    COMMAND="$key"
+    COMMAND="install"
+    shift # pass value
+    ;;
+    s|start)
+    if [ ! "$COMMAND" == "" ]; then
+       printf "$red error multiple commands$reset\n\n"
+       exit 1
+    fi
+    COMMAND="start"
+    shift # pass value
+    ;;
+    u|uninstall)
+    if [ ! "$COMMAND" == "" ]; then
+       printf "$red error multiple commands$reset\n\n"
+       exit 1
+    fi
+    COMMAND="uninstall"
     shift # pass value
     ;;
     d|download)
@@ -53,23 +70,30 @@ case $key in
        printf "$red error multiple commands$reset\n\n"
        exit 1
     fi
-    COMMAND="$key"
+    COMMAND="download"
     shift # past value
     ;;
     *)
-    if [ "$COMMAND" == "" ]; then
-       printf "$red error no command issued!$reset\n\n"
-       exit 1
-    fi
-    CMD="$fs/linux/$key/setup.sh $OPTIONS"
-    CMD2="~/.mytermux/linux/$key/setup.sh $OPTIONS"
+    case $COMMAND in
+    	install)
+    	CMD="$fs/linux/$key/setup.sh $OPTIONS"
+    	CMD2="~/.mytermux/linux/$key/setup.sh $OPTIONS"
+    	printf "$yellow [*] $CMD2\n$reset"
+    	$CMD
+    	if [[ $OPTIONS == *"--configure"* ]]; then
+       	   echo configure...
+           $fs/linux/$key/configure.sh 
+        fi
+	;;
+        start)
+	$fs/linux/$key/start.sh
+	;;
+        uninstall)
+	printf "$red [*] delete $key/linux-fs\n$reset"
+	rm -rf $fs/linux/$key/linux-fs
+	;;
+    esac
     shift # past value
-    printf "$yellow [*] $CMD2\n$reset"
-    $CMD
-    if [[ $OPTIONS == *"--configure"* ]]; then
-       echo configure...
-       $fs/linux/$key/configure.sh 
-    fi
     ;;
 esac
 done

@@ -19,16 +19,25 @@ name=${arch[$(uname -m)]}
 URL="https://partner-images.canonical.com/core/bionic/current/"
 file="ubuntu-bionic-core-cloudimg-$name-root.tar.gz"
 FS="$HOME/.mytermux/linux/ubuntu/linux-fs"
+CC="$HOME/.mytermux/linux/_cache"
 
 ## Download compressed Linux FS
 printf "$yellow [*] Download: $file ...$reset\n"
+
+mkdir -p $CC && cd $CC 
+if [ ! -f $file ]; then
+   curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o $file
+fi
+
 rm -rf $FS
 mkdir -p $FS && cd $FS
-curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o $file
+
+ln -s $CC/$file $file
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"
 proot --link2symlink tar -xf $file --exclude='dev'||:
+chmod +rwx -R $FS
 
 ## Remove compressed Linux FS
 rm $file
