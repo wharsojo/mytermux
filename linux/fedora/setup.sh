@@ -15,7 +15,7 @@ file="Fedora-Container-Base-29-1.2.$(uname -m).tar.xz"
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"
-tar xvf $file --strip-components=1 --exclude json --exclude VERSION
+tar vxf $file --strip-components=1 --exclude json --exclude VERSION > /dev/null
 printf "$blue 2nd extract: layer.tar$reset\n"
 tar -xpf layer.tar
 
