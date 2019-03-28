@@ -13,7 +13,7 @@ $ passwd  ## enter the `password`
 
 #### Termux: 
 These are the default Configs of `Termux`
-* `vim git sed zsh curl wget tmux proot openssh`
+* `vim git sed zsh curl wget tmux proot openssh debootstrap`
 * `oh-my-zsh with default configuration`
 * `tmux detach screen name: scr`
 * `sshd server - port 8022`

@@ -13,7 +13,7 @@ fi
 file="alpine-minirootfs-$VER-$(uname -m).tar.gz"
 
 ## Download compressed Linux FS into _cache folder
-. $HOME/.mytermux/linux/_modules/download-linux.sh
+. $HOME/.mytermux/linux/_modules/download-linux.sh alpine $*
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"

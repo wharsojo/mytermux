@@ -9,7 +9,7 @@ URL="https://dl.fedoraproject.org/pub/fedora/linux/releases/29/Container/$(uname
 file="Fedora-Container-Base-29-1.2.$(uname -m).tar.xz"
 
 ## Download compressed Linux FS into _cache folder
-. $HOME/.mytermux/linux/_modules/download-linux.sh
+. $HOME/.mytermux/linux/_modules/download-linux.sh fedora
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"

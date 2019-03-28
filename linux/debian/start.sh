@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash -e
 unset LD_PRELOAD
-fs="$HOME/.mytermux/linux/ubuntu/linux-fs"
+fs="$HOME/.mytermux/linux/debian/linux-fs"
 sdcard=$(ls /storage | grep -E '[0-9]+')
 gitea="$HOME/.mytermux/gitea-app"
 java="$HOME/.mytermux/java-vm"
@@ -12,7 +12,7 @@ blue='\033[1;34m'
 yellow='\033[1;33m'
 
 if [ ! -d $fs ]; then
-   printf "$yellow [*] You need to run 'mtx i ubuntu' to create linux-fs\n$reset"
+   printf "$yellow [*] You need to run 'mtx i debian' to create linux-fs\n$reset"
    exit $?
 fi
 

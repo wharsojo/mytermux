@@ -1,11 +1,25 @@
-FS="$HOME/.mytermux/linux/alpine/linux-fs"
-CC="$HOME/.mytermux/linux/_cache"
+FS="$HOME/.mytermux/linux/$1/linux-fs"
+X1="$HOME/storage/external-1"
 
 ## Download compressed Linux FS
-printf "$yellow [*] Download: $file ...$reset\n"
+if [[ ! -d $X1 ]]; then
+  MSG="$yellow [*] Download: $file ...$reset\n"
+  CC="$HOME/.mytermux/linux/_cache"
+else
+  MSG="$yellow [*] Download: $red$file ...$reset\n"
+  CC="$X1/.mytermux/linux/_cache"
+fi
+
+#printf "$green params: $*\n"
 
 mkdir -p $CC && cd $CC
-if [ ! -f $file ]; then
+
+if [[ $* == *"--remote"* ]] && [[ -f $file ]]; then
+   rm $file
+fi
+
+if [[ ! -f $file ]]; then
+   printf "$MSG"
    curl --progress-bar -L --fail --retry 4 -O "$URL/$file" -o $file
 fi
 

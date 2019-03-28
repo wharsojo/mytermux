@@ -12,7 +12,7 @@ blue='\033[1;34m'
 yellow='\033[1;33m'
 
 if [ ! -d $fs ]; then
-   printf "$yellow [*] You need to run setup-kali to create linux-fs\n$reset"
+   printf "$yellow [*] You need to run 'mtx i kali' to create linux-fs\n$reset"
    exit $?
 fi
 

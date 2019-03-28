@@ -9,7 +9,7 @@ URL="https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Rootfs/Ce
 file="centos-rootfs-${arch}.tar.xz"
 
 ## Download compressed Linux FS into _cache folder
-. $HOME/.mytermux/linux/_modules/download-linux.sh
+. $HOME/.mytermux/linux/_modules/download-linux.sh centos
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"

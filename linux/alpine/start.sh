@@ -15,7 +15,7 @@ yellow='\033[1;33m'
 #export PROOT_VERBOSE=2
 
 if [ ! -d $fs ]; then
-   printf "$yellow [*] You need to run setup-alpine to create linux-fs\n$reset"
+   printf "$yellow [*] You need to run 'mtx i alpine' to create linux-fs\n$reset"
    exit $?
 fi
 

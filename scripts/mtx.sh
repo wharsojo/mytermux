@@ -15,14 +15,14 @@ if [ $# -lt 2 ]; then
    printf "mtx	v0.1 \n"
    printf "Use mtx [options] <command> [arguments] \n\n"
    printf "Commands:\n"
-   printf "i/install	alpine centos fedora kali ubuntu\n"
-   printf "u/uninstall	alpine centos fedora kali ubuntu\n"
+   printf "i/install	alpine debian centos fedora kali ubuntu\n"
+   printf "u/uninstall	alpine debian centos fedora kali ubuntu\n"
    printf "s/start    	alpine\n"
    printf "d/download	gitea\n"
    printf "r/remove	gitea\n\n"
    printf "Example - i/install:\n"
    printf "* mtx install alpine\n"
-   printf "* mtx -c i alpine\n"
+   printf "* mtx -c i centos\n"
    printf "\n"
    printf "Example - d/download:\n"
    printf "* mtx d gitea\n"
@@ -37,6 +37,10 @@ key="$1"
 fs="$HOME/.mytermux"
 
 case $key in
+    -r|--remote)
+    OPTIONS+="--remote "
+    shift # pass options
+    ;;
     -c|--configure)
     OPTIONS+="--configure "
     shift # pass options
@@ -65,6 +69,14 @@ case $key in
     COMMAND="uninstall"
     shift # pass value
     ;;
+    r|remove)
+    if [ ! "$COMMAND" == "" ]; then
+       printf "$red error multiple commands$reset\n\n"
+       exit 1
+    fi
+    COMMAND="remove"
+    shift # pass value
+    ;;
     d|download)
     if [ ! "$COMMAND" == "" ]; then
        printf "$red error multiple commands$reset\n\n"
@@ -87,6 +99,10 @@ case $key in
 	;;
         start)
 	$fs/linux/$key/start.sh
+	;;
+        remove)
+	printf "$red [*] remove $key"
+	rm -rf $fs/$key
 	;;
         uninstall)
 	printf "$red [*] delete $key/linux-fs\n$reset"

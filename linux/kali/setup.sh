@@ -9,7 +9,7 @@ URL="https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Rootfs/Ka
 file="kali-rootfs-${arch}.tar.gz"
 
 ## Download compressed Linux FS into _cache folder
-. $HOME/.mytermux/linux/_modules/download-linux.sh
+. $HOME/.mytermux/linux/_modules/download-linux.sh kali
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"
