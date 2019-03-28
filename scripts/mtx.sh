@@ -46,16 +46,11 @@ while [[ $# -gt 0 ]]; do
     r|remove)       multiple_commands && COMMAND="remove";;
     *)
       case $COMMAND in
-        start)
-	  $fs/linux/$key/start.sh;;
-    	install)
-          install_linux;;
-        uninstall)
-	  uninstall_linux;;
-        download)
-	  $fs/scripts/$key.sh;;
-        remove)
-	  remove_app;;
+        start)      $fs/linux/$key/start.sh;;
+    	install)    install_linux;;
+        uninstall)  uninstall_linux;;
+        download)   $fs/scripts/$key.sh;;
+        remove)     remove_app;;
       esac;;
   esac
   shift # past value
