@@ -3,7 +3,7 @@ if [ $# -lt 2 ]; then
       printf "$red incomplete [arguments], at least one argument\n\n$reset"
    fi
    printf "$blue"
-   printf "mtx	v0.1 \n"
+   printf "mtx	v0.1.5 \n"
    printf "Use mtx [options] <command> [arguments] \n\n"
    printf "Commands:\n"
    printf "i/install	alpine debian centos fedora kali ubuntu\n"

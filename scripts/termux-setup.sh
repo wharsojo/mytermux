@@ -11,7 +11,7 @@ ohMyZsh="$github/robbyrussell/oh-my-zsh/master/tools/install.sh"
 
 ## Install termux packages & setup storages
 printf "$yellow [*] Install termux packages ...$reset\n"
-pkg i vim git sed zsh curl wget tmux proot openssh debootstra -y
+pkg i vim git sed zsh curl wget tmux proot openssh -y
 
 printf "$yellow [*] Setup storage ...$reset\n"
 termux-setup-storage
