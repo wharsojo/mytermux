@@ -45,7 +45,7 @@ command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin"
 command+=" /bin/zsh --login"
 
 [ ! -d $fs/root/.oh-my-zsh ] && \
-command+=" /bin/sh --login"
+command+=" /bin/bash --login"
 
 echo $command
 printf "$yellow [*] $(cat $fs/etc/centos-release)\n$reset"
