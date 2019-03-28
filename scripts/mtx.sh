@@ -2,15 +2,16 @@
 . $HOME/.mytermux/linux/_modules/init-var-colors.sh
 . $HOME/.mytermux/scripts/mtx-info.sh $*
 
+OPTIONS=""
+POSITIONAL=()
+fs="$HOME/.mytermux"
+
 function multiple_commands() {
 if [ ! "$COMMAND" == "" ]; then
   printf "$red error multiple commands$reset\n\n"
   exit 1
 fi
 }
-
-OPTIONS=""
-POSITIONAL=()
 
 function install_linux() {
   CMD="$fs/linux/$key/setup.sh $OPTIONS"
@@ -23,25 +24,26 @@ function install_linux() {
   fi
 }
 
+function uninstall_linux() {
+  printf "$red [*] delete $key/linux-fs\n$reset"
+  rm -rf $fs/linux/$key/linux-fs
+}
+
+function remove_app() {
+  printf "$red [*] remove $key"
+  rm -rf $fs/$key
+}
+
 while [[ $# -gt 0 ]]; do
   key="$1"
-  fs="$HOME/.mytermux"
-
   case $key in
-    -r|--remote)
-      OPTIONS+="--remote ";;
-    -c|--configure)
-      OPTIONS+="--configure ";;
-    s|start)
-      multiple_commands && COMMAND="start";;
-    i|install)
-      multiple_commands && COMMAND="install";;
-    u|uninstall)
-      multiple_commands && COMMAND="uninstall";;
-    d|download)
-      multiple_commands && COMMAND="download";;
-    r|remove)
-      multiple_commands && COMMAND="remove";;
+    -r|--remote)    OPTIONS+="--remote ";;
+    -c|--configure) OPTIONS+="--configure ";;
+    s|start)        multiple_commands && COMMAND="start";;
+    i|install)      multiple_commands && COMMAND="install";;
+    u|uninstall)    multiple_commands && COMMAND="uninstall";;
+    d|download)     multiple_commands && COMMAND="download";;
+    r|remove)       multiple_commands && COMMAND="remove";;
     *)
       case $COMMAND in
         start)
@@ -49,16 +51,15 @@ while [[ $# -gt 0 ]]; do
     	install)
           install_linux;;
         uninstall)
-	  printf "$red [*] delete $key/linux-fs\n$reset"
-	  rm -rf $fs/linux/$key/linux-fs;;
+	  uninstall_linux;;
         download)
 	  $fs/scripts/$key.sh;;
         remove)
-	  printf "$red [*] remove $key"
-	  rm -rf $fs/$key;;
+	  remove_app;;
       esac;;
   esac
   shift # past value
 done
+
 set -- "${POSITIONAL[@]}" # restore positional parameters
 printf "\n"

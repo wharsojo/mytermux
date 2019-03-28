@@ -1,7 +1,9 @@
 #!/data/data/com.termux/files/usr/bin/bash -e
 
+_modules="$HOME/.mytermux/linux/_modules"
+
 ## Setup Variables
-. $HOME/.mytermux/linux/_modules/init-var-colors.sh
+. $_modules/init-var-colors.sh
 
 ## Setup URL for download Linux FS 
 URL="https://dl.fedoraproject.org/pub/fedora/linux/releases/29/Container/$(uname -m)/images/"
@@ -9,7 +11,7 @@ URL="https://dl.fedoraproject.org/pub/fedora/linux/releases/29/Container/$(uname
 file="Fedora-Container-Base-29-1.2.$(uname -m).tar.xz"
 
 ## Download compressed Linux FS into _cache folder
-. $HOME/.mytermux/linux/_modules/download-linux.sh fedora
+. $_modules/download-linux.sh fedora $*
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"
@@ -24,5 +26,5 @@ rm $file
 cd ..
 
 ## Configure linux
-. $HOME/.mytermux/linux/_modules/configure-linux.sh
+. $_modules/configure-linux.sh
 

@@ -1,7 +1,9 @@
 #!/data/data/com.termux/files/usr/bin/bash -e
 
+_modules="$HOME/.mytermux/linux/_modules"
+
 ## Setup Colors
-. $HOME/.mytermux/linux/_modules/init-var-colors.sh
+. $_modules/init-var-colors.sh
 
 ## Setup URL for download Linux FS
 URL="http://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/$(uname -m)"
@@ -13,7 +15,7 @@ fi
 file="alpine-minirootfs-$VER-$(uname -m).tar.gz"
 
 ## Download compressed Linux FS into _cache folder
-. $HOME/.mytermux/linux/_modules/download-linux.sh alpine $*
+. $_modules/download-linux.sh alpine $*
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"
@@ -24,4 +26,4 @@ rm $file
 cd ..
 
 ## Configure linux
-. $HOME/.mytermux/linux/_modules/configure-linux.sh
+. $_modules/configure-linux.sh
