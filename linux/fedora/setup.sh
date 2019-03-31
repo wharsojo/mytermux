@@ -17,7 +17,7 @@ file="Fedora-Container-Base-29-1.2.$(uname -m).tar.xz"
 printf "$yellow [*] Extract file-system$reset\n"
 tar xf $file --strip-components=1 --exclude json --exclude VERSION > /dev/null
 printf "$blue 2nd extract: layer.tar$reset\n"
-tar -xpf layer.tar
+proot --link2symlink tar -xf layer.tar --exclude='dev' > /dev/null
 
 ## Remove compressed Linux FS
 chmod +rwx -R $FS
