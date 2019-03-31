@@ -15,7 +15,7 @@ file="kali-rootfs-${arch}.tar.gz"
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"
-proot --link2symlink tar -vxf ${file} --exclude='dev' > /dev/null
+proot --link2symlink tar -xf ${file} --exclude='dev' > /dev/null
 chmod +rwx -R $FS
 
 ## Remove compressed Linux FS

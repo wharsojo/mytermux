@@ -27,5 +27,5 @@ rm -rf $FS
 mkdir -p $FS/binds && cd $FS
 
 printf "$yellow [*] Copying: $file ...$reset\n"
-#ln -s $CC/$file $file
-cp -f $CC/$file $file
+ln -s $CC/$file $file
+#cp -f $CC/$file $file

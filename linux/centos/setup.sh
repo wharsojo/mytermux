@@ -15,7 +15,7 @@ file="centos-rootfs-${arch}.tar.xz"
 
 ## Extract Linux file-system
 printf "$yellow [*] Extract file-system$reset\n"
-proot --link2symlink tar -vxJf $file --exclude='dev' > /dev/null
+proot --link2symlink tar -xJf $file --exclude='dev' > /dev/null
 chmod +rwx -R $FS
 
 ## Remove compressed Linux FS
