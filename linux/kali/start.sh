@@ -29,9 +29,6 @@ command+=" -b /storage/emulated/0:/root/internal"
 [[ -d $gitea ]] && \
 command+=" -b $gitea:/root/gitea-app"
 
-[[ -d $java ]] && \
-command+=" -b $java:/root/java-vm"
-
 command+=" -b $HOME"
 command+=" -r $fs"
 command+=" -w /root"
