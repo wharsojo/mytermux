@@ -19,7 +19,7 @@ These are the default Configs of `Termux`
 * `tmux detach screen name: scr`
 * `sshd server - port 8022`
 
-To setup and start *Linux inside* `Termux`, there is a script called `mtx` stands for (m)y (t)termu(x), several linux distro are avalable: `alpine debian centos fedora kali nethunter ubuntu`
+To setup and start *Linux inside* `Termux`, there is a script called `mtx` stands for (m)y (t)termu(x), several linux distro are avalable: `alpine`, `debian`, `centos`, `fedora`, `kali`, `nethunter`, `ubuntu`.
 ```
 ➜  ~ mtx
 mtx     v0.1.6
@@ -45,7 +45,12 @@ When installing linux with `options -c` the default Configs for Linux (`Centos`,
 * `vim git zsh curl`
 * `oh-my-zsh minus git dirty status`
 
-`Alpine` linux right now having error: ERROR: busybox-1.29.3-r10.trigger: script exited with error 127, no work-around can be apply for this error, Appriciated if anyone can help.
+`Alpine` linux is having error:
+```
+Executing busybox-1.29.3-r10.trigger
+ERROR: busybox-1.29.3-r10.trigger: script exited with error 127
+```
+No work-around can be apply for this error, Appriciated if anyone can help.
 
 `Centos/Fedora` linux on AndroidOne, the installation is having problem with symlink, will failed to install correctly, Appriciated if anyone can help. for Samsung Note9 is fine. 
 
